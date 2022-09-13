@@ -12,12 +12,6 @@ public class UserDAO {
         return null;
     }
 
-   /* public int getIDbyUser(User p) {
-        Connection c = ConnectionPool.getInstance().getConnection();
-            ConnectionPool.getInstance().returnConnection(c);
-        return 0;
-    }*/
-
     public void createUser(User u) {
         Connection c = ConnectionPool.getInstance().getConnection();
             ConnectionPool.getInstance().returnConnection(c);
