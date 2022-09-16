@@ -6,8 +6,8 @@ public class MemberCard {
     private int yearsAsMember;
     private double discount;
 
-    MemberCard () {}
-    MemberCard(String level, int yearsAsMember, double discount) {
+    public MemberCard () {}
+    public MemberCard(String level, int yearsAsMember, double discount) {
         this.level = level;
         this.yearsAsMember = yearsAsMember;
         this.discount = discount;

@@ -15,13 +15,18 @@ import java.io.File;
 
 public class ParserDOM {
     private static final Logger LOGGER = Logger.getLogger(ParserDOM.class.getName());
-    public Document validate(String filename) throws SAXException {
         Document doc;
-
-        SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        // load a WXS schema, represented by a Schema instance
-        Schema schema = factory.newSchema(new File(filename));
-
+        Schema schema;
+        public void getSchema(String filename) {
+            try {
+                SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+                // load a WXS schema, represented by a Schema instance
+                schema = factory.newSchema(new File(filename));
+            } catch (SAXException e) {
+                LOGGER.warn(e.getMessage());
+            }
+        }
+    public Document readXML(String filename) {
         try {
             File file = FileUtils.getFile("DOMFile.txt");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
