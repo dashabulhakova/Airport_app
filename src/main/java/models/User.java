@@ -1,4 +1,4 @@
-package people;
+package models;
 import java.util.Objects;
 //plain container for user data
     public class User {

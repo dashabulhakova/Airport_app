@@ -1,4 +1,4 @@
-package luggage;
+package models;
 
 import java.util.Objects;
 

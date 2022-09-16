@@ -1,9 +1,7 @@
 package services;
 
 import DAOclasses.FlightDAO;
-import DAOclasses.UserDAO;
-import flightInfo.Flight;
-import people.User;
+import models.Flight;
 
 public class FlightService implements IFlightService {
     private FlightDAO flightDAO;

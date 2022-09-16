@@ -1,4 +1,4 @@
-package flightInfo;
+package models;
 
 public enum Airline {
     DELTA(1, "Delta",176),

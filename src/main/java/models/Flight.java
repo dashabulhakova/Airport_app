@@ -1,10 +1,6 @@
-package flightInfo;
-
-import org.apache.log4j.Logger;
+package models;
 
 import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Flight {
     private int flightId;

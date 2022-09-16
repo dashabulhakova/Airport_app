@@ -1,6 +1,6 @@
 package services;
 
-import flightInfo.Flight;
+import models.Flight;
 
 public interface IFlightService {
     public Flight getFlightByID(int id);

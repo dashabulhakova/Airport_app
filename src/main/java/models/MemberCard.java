@@ -1,4 +1,4 @@
-package flightInfo;
+package models;
 
 public enum MemberCard {
     BRONZE("Bronze", 1, 0.05),//years of membership, discount

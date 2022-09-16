@@ -1,4 +1,4 @@
-package flightInfo;
+package models;
 
 public enum Meal {
     VE(1, "Vegan"),

@@ -1,5 +1,5 @@
 package DAOclasses;
-import flightInfo.MemberCard;
+import models.MemberCard;
 import utils.ConnectionPool;
 import java.sql.Connection;
 

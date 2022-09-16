@@ -1,4 +1,4 @@
-package flightInfo;
+package models;
 
 public enum City {
     CITY1("New York"),

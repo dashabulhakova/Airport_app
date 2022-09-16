@@ -1,6 +1,6 @@
 package services;
 
-import people.Passenger;
+import models.Passenger;
 
 public interface IPassengerInterface {
     public Passenger getPassengerByID(int id);

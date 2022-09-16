@@ -1,5 +1,5 @@
 package DAOclasses;
-import flightInfo.Airline;
+import models.Airline;
 import utils.ConnectionPool;
 
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package people;
+package models;
 
 public class Passenger {
         private int id;

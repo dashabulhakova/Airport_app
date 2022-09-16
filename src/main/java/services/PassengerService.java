@@ -1,9 +1,7 @@
 package services;
 
 import DAOclasses.PassengerDAO;
-import DAOclasses.UserDAO;
-import people.Passenger;
-import people.User;
+import models.Passenger;
 
 public class PassengerService implements IPassengerInterface {
     private PassengerDAO passengerDAO;

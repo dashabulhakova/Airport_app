@@ -1,7 +1,7 @@
 package services;
 
 import DAOclasses.UserDAO;
-import people.User;
+import models.User;
 
 public class UserService implements IUserService {
     private UserDAO userDAO;

@@ -1,6 +1,6 @@
 package DAOclasses;
 
-import people.User;
+import models.User;
 import utils.ConnectionPool;
 
 import java.sql.Connection;

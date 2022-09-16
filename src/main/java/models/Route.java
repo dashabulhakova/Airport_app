@@ -1,6 +1,4 @@
-package flightInfo;
-
-import org.apache.log4j.Logger;
+package models;
 
 public class Route {
     private int routeId;

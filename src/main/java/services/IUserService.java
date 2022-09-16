@@ -1,6 +1,6 @@
 package services;
 
-import people.User;
+import models.User;
 
 public interface IUserService {
     public User getUserByID(int id);
