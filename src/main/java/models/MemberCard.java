@@ -1,10 +1,6 @@
 package models;
 
-public enum MemberCard {
-    BRONZE("Bronze", 1, 0.05),//years of membership, discount
-    SILVER("Silver", 3, 0.1),
-    GOLD("Gold", 5, 0.15);
-
+public class MemberCard {
     private int id;
     private String level;
     private int yearsAsMember;

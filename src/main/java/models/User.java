@@ -2,49 +2,62 @@ package models;
 import java.util.Objects;
 //plain container for user data
     public class User {
-        private int id;
-        private int profileID;
+    private int id;
+    private String firstName;
+    private String lastName;
 
-        // constructors / standard setters / getters
-        public User() {}
+    // constructors / standard setters / getters
+    public User() {
+    }
 
-        public User(int profileID) {
-            this.profileID = profileID;
-        }
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-        public int getId() {
-            return id;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public void setId(int newID) {
-            id = newID;
-        }
+    public void setId(int newID) {
+        id = newID;
+    }
 
-        public int getProfileID() {
-            return profileID;
-        }
+    public String getFirstName() {
+        return firstName;
+    }
 
-        public void setProfileID(int profileID) {
-            this.profileID = profileID;
-        }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-        @Override
-        public String toString() {
-            return super.toString();
-        }
+    public String getLastName() {
+        return lastName;
+    }
 
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (!(obj instanceof User)) return false;
-            User per = (User) obj;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-            return (Objects.equals(this.id, per.id) &&
-                    Objects.equals(this.profileID, per.profileID));
-        }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(id, profileID);
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId() == user.getId() && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName());
+    }
 }

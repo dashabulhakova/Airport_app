@@ -1,14 +1,6 @@
 package models;
 
-public enum Airline {
-    DELTA(1, "Delta",176),
-    SPIRIT(2, "Spirit",98),
-    HAWAIIAN(3, "Hawaiian",250),
-    UNITED_AIRLINES(4, "United Airlines",150),
-    SOUTHWEST(5, "Southwest",275),
-    FRONTIER(6, "Frontier",167),
-    AMERICAN_AIRLINES(7, "American Airlines",138);
-
+public class Airline {
     private int id;
     private int index;
     private String name;

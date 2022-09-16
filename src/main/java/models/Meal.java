@@ -1,14 +1,6 @@
 package models;
 
-public enum Meal {
-    VE(1, "Vegan"),
-    VG(2, "Vegetarian"),
-    H( 3, "Halal"),
-    SF(4, "Sea Food"),
-    LF(5, "Lactose Free"),
-    R( 6, "Regular"),
-    D( 7, "Extra option");
-
+public class Meal {
     private int id;
     private String mealType;
     private int option;
