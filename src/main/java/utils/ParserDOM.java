@@ -15,28 +15,25 @@ import java.io.File;
 
 public class ParserDOM {
     private static final Logger LOGGER = Logger.getLogger(ParserDOM.class.getName());
-        Document doc;
-        Schema schema;
-        public void getSchema(String filename) {
-            try {
-                SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-                // load a WXS schema, represented by a Schema instance
-                schema = factory.newSchema(new File(filename));
-            } catch (SAXException e) {
-                LOGGER.warn(e.getMessage());
-            }
-        }
-    public Document readXML(String filename) {
+
+    public Document validate(String filename) {
+        Schema schema = null;
+        Document doc = null;
         try {
-            File file = FileUtils.getFile("DOMFile.txt");
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            schema = factory.newSchema(new File(filename));
+        } catch (SAXException e) {
+            LOGGER.warn(e.getMessage());
+        }
+        try {
+            File file = FileUtils.getFile(filename);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             doc = db.parse((file));
-            // create a Validator instance to validate an instance document
-            Validator validator = schema.newValidator();
 
             // validate the DOM tree
             try {
+                Validator validator = schema.newValidator();
                 validator.validate(new DOMSource(doc));
             } catch (SAXException e) {
                 LOGGER.warn(e.getMessage() + "instance document is invalid");
@@ -48,3 +45,4 @@ public class ParserDOM {
         return doc;
     }
 }
+

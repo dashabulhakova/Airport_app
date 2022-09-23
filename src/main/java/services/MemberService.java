@@ -14,12 +14,12 @@ import java.sql.SQLException;
 public class MemberService implements IMemberService {
     private static final Logger LOGGER = Logger.getLogger(MemberService.class.getName());
     private MemberDAO memberDAO;
-    ParserDOM parseMember;
+    private ParserDOM parseMember;
 
     @Override
     public void dataParse(String schema, String xmlFile) {
-        parseMember.getSchema(schema);
-        Document doc = parseMember.readXML(xmlFile);
+        parseMember.validate(schema);
+        Document doc = parseMember.validate(xmlFile);
         NodeList list = doc.getElementsByTagName("level");
         for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);

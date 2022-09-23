@@ -1,7 +1,8 @@
 package models;
-
-import java.util.Objects;
-
+import javax.xml.bind.annotation.*;
+@XmlRootElement(name = "bag")
+@XmlType(propOrder = {"id", "size", "weight"})
+@XmlAccessorType(XmlAccessType.FIELD)
     public class Bag {
         private int id;
         private int size;
@@ -18,7 +19,7 @@ import java.util.Objects;
         public int getId() {
             return id;
         }
-
+    @XmlAttribute
         public void setId(int id) {
             this.id = id;
         }
@@ -26,7 +27,7 @@ import java.util.Objects;
         public int getSize() {
             return size;
         }
-
+    @XmlElement
         public void setSize(int size) {
             this.size = size;
         }
@@ -34,29 +35,8 @@ import java.util.Objects;
         public int getWeight() {
             return weight;
         }
-
+    @XmlElement
         public void setWeight(int weight) {
             this.weight = weight;
-        }
-
-        @Override
-        public String toString() {
-            return "Bag{" +
-                    "size=" + size +
-                    ", weight=" + weight +
-                    '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Bag)) return false;
-            Bag bag = (Bag) o;
-            return getId() == bag.getId() && getSize() == bag.getSize() && getWeight() == bag.getWeight();
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(getId(), getSize(), getWeight());
         }
     }

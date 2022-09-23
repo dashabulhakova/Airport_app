@@ -1,0 +1,22 @@
+[
+  {
+    "animal": "Dog",
+    "size": "Medium",
+    "fee": 10
+  },
+  {
+    "animal": "Cat",
+    "size": "Small",
+    "fee": 5
+  },
+  {
+    "animal": "Dog",
+    "size": "Small",
+    "fee": 7
+  },
+  {
+    "animal": "Rabbit",
+    "size": "Small",
+    "fee": 3
+  }
+]

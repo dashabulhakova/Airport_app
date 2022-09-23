@@ -1,11 +1,17 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Animal {
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("animal")
     private String animalType;
+    @JsonProperty("size")
     private int size;
+    @JsonProperty("fee")
     private double fee;
 
     public Animal() {}
