@@ -2,7 +2,6 @@ package utils;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -18,12 +17,12 @@ public class ParserDOM {
 
     public Document validate(String filename) {
         Schema schema = null;
-        Document doc = null;
+        Document doc;
         try {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             schema = factory.newSchema(new File(filename));
-        } catch (SAXException e) {
-            LOGGER.warn(e.getMessage());
+        } catch (Exception e) {
+            LOGGER.warn(e.getMessage() + "can't load schema");
         }
         try {
             File file = FileUtils.getFile(filename);
@@ -31,11 +30,10 @@ public class ParserDOM {
             DocumentBuilder db = dbf.newDocumentBuilder();
             doc = db.parse((file));
 
-            // validate the DOM tree
             try {
                 Validator validator = schema.newValidator();
                 validator.validate(new DOMSource(doc));
-            } catch (SAXException e) {
+            } catch (Exception e) {
                 LOGGER.warn(e.getMessage() + "instance document is invalid");
             }
         } catch (Exception e) {

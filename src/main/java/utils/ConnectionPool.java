@@ -22,6 +22,7 @@ public class ConnectionPool {
             InputStream input = new FileInputStream("src/main/resources/database.properties");
             Properties p = new Properties();
             p.load(input);
+            input.close();
             String url = p.getProperty("url");
             String user = p.getProperty("username");
             String password = p.getProperty("password");
@@ -43,10 +44,10 @@ public class ConnectionPool {
             return pool;
         }
 
-        public static Connection createConnection(String url, String user, String password) throws SQLException {
-            return DriverManager.getConnection(url, user, password);
-        }
         public synchronized Connection getConnection() {
+            if (connectionPool.isEmpty()) {
+                throw new RuntimeException("There are no more available connections!");
+            }
             return connectionPool.remove(connectionPool.size() - 1);
         }
 

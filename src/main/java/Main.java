@@ -7,8 +7,7 @@ public class Main {
         BagService bagService = new BagService();
         //bagService.getBagFromXML("src/main/resources/xsd/bags.xsd", "src/main/resources/xml/bags.xml");
 
-        bagService.parseDOM("src/main/resources/xsd/insurances.xsd", "src/main/resources/xml/insurances.xml");
-
+        bagService.parseDOM("src/main/resources/xsd/bags.xsd", "src/main/resources/xml/bags.xml");
 
     }
 }

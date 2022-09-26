@@ -1,16 +1,18 @@
 package models;
 import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "bag")
-@XmlType(propOrder = {"id", "size", "weight"})
+@XmlType(propOrder = {"id", "amount", "size", "weight"})
 @XmlAccessorType(XmlAccessType.FIELD)
     public class Bag {
         private int id;
+        private int amount;
         private int size;
         private int weight;
 
         public Bag() {};
 
-        public Bag(int size, int weight) {
+        public Bag(int amount, int size, int weight) {
+            this.amount = amount;
             this.size = size;
             this.weight = weight;
 
@@ -24,7 +26,15 @@ import javax.xml.bind.annotation.*;
             this.id = id;
         }
 
-        public int getSize() {
+    public int getAmount() {
+        return amount;
+    }
+    @XmlElement
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getSize() {
             return size;
         }
     @XmlElement

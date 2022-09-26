@@ -10,8 +10,8 @@ import java.sql.SQLException;
 
 public class BagDAO implements IDAO<Bag>{
     private static final Logger LOGGER = Logger.getLogger(BagDAO.class.getName());
-    private static final String INSERT = "INSERT INTO bags (id, size, weight) VALUES (?, ?, ?);";
-    private static final String UPDATE = "UPDATE bags SET  = ?, size = ?, weight = ?, WHERE id = ?;";
+    private static final String INSERT = "INSERT INTO bags (id, amount, size, weight) VALUES (?, ?, ?, ?);";
+    //private static final String UPDATE = "UPDATE bags SET  amount = ?, size = ?, weight = ?, WHERE id = ?;";
 
     @Override
     public void create(Bag b) {
@@ -20,8 +20,9 @@ public class BagDAO implements IDAO<Bag>{
         try {
             ps = c.prepareStatement(INSERT);
             ps.setInt(1, b.getId());
-            ps.setInt(2, b.getSize());
-            ps.setInt(3, b.getWeight());
+            ps.setInt(2, b.getAmount());
+            ps.setInt(3, b.getSize());
+            ps.setInt(4, b.getWeight());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage() + "bag was not created");

@@ -29,7 +29,7 @@ public class BagService implements IBagService {
 
     @Override
     public void parseDOM(String xsdFile, String xmlFile) {
-        //parseBag.validate(xsdFile);
+        parseBag.validate(xsdFile);
         Document doc = parseBag.validate(xmlFile);
         NodeList list = doc.getElementsByTagName("bag");
         for (int i = 0; i < list.getLength(); i++) {
@@ -38,9 +38,10 @@ public class BagService implements IBagService {
                 Element element = (Element) node;
                 Bag b = new Bag();
                 b.setId(Integer.parseInt(element.getAttribute("id")));
+                b.setAmount(Integer.parseInt(element.getElementsByTagName("amount").item(0).getTextContent()));
                 b.setSize(Integer.parseInt(element.getElementsByTagName("size").item(0).getTextContent()));
                 b.setWeight(Integer.parseInt(element.getElementsByTagName("weight").item(0).getTextContent()));
-                //bagDAO.create(b);
+                    bagDAO.create(b);
             }
         }
     }
