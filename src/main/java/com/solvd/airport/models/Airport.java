@@ -1,9 +1,15 @@
 package com.solvd.airport.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Airport {
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("location")
     private String location;
+    @JsonProperty("terminal")
     private String terminal;
 
     public Airport() {

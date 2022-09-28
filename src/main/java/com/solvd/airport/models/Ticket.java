@@ -1,12 +1,18 @@
 package com.solvd.airport.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class Ticket {
+    @JsonProperty
     private int id;
+    @JsonProperty
     private int price;
+    @JsonProperty
     private int seat;
+    @JsonProperty
     private Date flightDate;
     public Ticket() {}
     public Ticket(int price, int seat, Date flightDate) {
