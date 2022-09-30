@@ -1,6 +1,6 @@
 package com.solvd.airport.services;
 
-import com.solvd.airport.DAOclasses.MemberDAO;
+import com.solvd.airport.DAO.MemberDAO;
 import com.solvd.airport.models.MemberCard;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;

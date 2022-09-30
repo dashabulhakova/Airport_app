@@ -1,4 +1,4 @@
-package com.solvd.airport.services;
+package com.solvd.airport.services.jdbcImpl;
 
 import com.solvd.airport.models.User;
 

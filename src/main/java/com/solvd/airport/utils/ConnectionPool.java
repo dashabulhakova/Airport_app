@@ -30,11 +30,11 @@ public class ConnectionPool {
                 connectionPool.add(DriverManager.getConnection(url, user, password));
             }
         } catch (SQLException e) {
-            LOGGER.error("");
+            LOGGER.error("Can't load datbase");
         } catch (FileNotFoundException e) {
-                LOGGER.error("");;
+                LOGGER.error("Can't find a file");;
         } catch (IOException e) {
-                LOGGER.error("");;
+                LOGGER.error("Can't connect");;
         }
         }
             public static ConnectionPool getInstance() {

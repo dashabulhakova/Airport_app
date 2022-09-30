@@ -1,6 +1,6 @@
 package com.solvd.airport.services;
 
-import com.solvd.airport.DAOclasses.BagDAO;
+import com.solvd.airport.DAO.BagDAO;
 import com.solvd.airport.models.Bag;
 import com.solvd.airport.utils.ParserDOM;
 import org.apache.log4j.Logger;
@@ -27,9 +27,9 @@ public class BagService implements IBagService {
     }
 
     @Override
-    public void parseDOM(String xsdFile, String xmlFile) {
-        parseBag.validate(xsdFile);
-        Document doc = parseBag.validate(xmlFile);
+    public void parseDOM(String xmlFile, String xsdFile) {
+        parseBag.validate(xmlFile);
+        Document doc = parseBag.validate(xsdFile);
         NodeList list = doc.getElementsByTagName("bag");
         for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);
@@ -40,7 +40,6 @@ public class BagService implements IBagService {
                 b.setAmount(Integer.parseInt(element.getElementsByTagName("amount").item(0).getTextContent()));
                 b.setSize(Integer.parseInt(element.getElementsByTagName("size").item(0).getTextContent()));
                 b.setWeight(Integer.parseInt(element.getElementsByTagName("weight").item(0).getTextContent()));
-                    bagDAO.create(b);
             }
         }
     }
@@ -54,17 +53,17 @@ public class BagService implements IBagService {
         } catch (JAXBException | FileNotFoundException e) {
             LOGGER.warn(e.getMessage());
         }
-        bagDAO.create(bagFromXML);
+        //bagDAO.create(bagFromXML);
 
     }
     @Override
     public void createXML(String xmlFile) {
-        Bag bagToXML = new Bag();
+        Bag bag = new Bag();
         try {
             JAXBContext context = JAXBContext.newInstance(Bag.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(bagToXML, new File(xmlFile));
+            marshaller.marshal(bag, new File(xmlFile));
         } catch (JAXBException e) {
             LOGGER.warn(e.getMessage());
         }

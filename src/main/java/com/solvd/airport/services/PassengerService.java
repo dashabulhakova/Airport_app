@@ -1,6 +1,6 @@
 package com.solvd.airport.services;
 
-import com.solvd.airport.DAOclasses.PassengerDAO;
+import com.solvd.airport.DAO.PassengerDAO;
 import com.solvd.airport.models.Passenger;
 
 public class PassengerService implements IPassengerInterface {

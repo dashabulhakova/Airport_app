@@ -9,6 +9,7 @@
                             <xs:element name="meal_type" type="xs:string"/>
                             <xs:element name="price" type="xs:int"/>
                         </xs:sequence>
+                        <xs:attribute type="xs:byte" name="id" />
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>

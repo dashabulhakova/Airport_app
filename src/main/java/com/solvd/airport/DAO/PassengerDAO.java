@@ -1,23 +1,27 @@
-package com.solvd.airport.DAOclasses;
-import com.solvd.airport.models.Flight;
+package com.solvd.airport.DAO;
+
+import com.solvd.airport.models.Passenger;
 import com.solvd.airport.utils.ConnectionPool;
+
 import java.sql.Connection;
 
-public class FlightDAO {
-    public Flight getFlightByID(int id) {
+public class PassengerDAO {
+    public Passenger getPassengerByID(int id) {
         Connection c = ConnectionPool.getInstance().getConnection();
         ConnectionPool.getInstance().returnConnection(c);
         return null;
     }
-    public void createFlight(Flight f) {
+
+    public void createPassenger(Passenger p) {
         Connection c = ConnectionPool.getInstance().getConnection();
         ConnectionPool.getInstance().returnConnection(c);
     }
-    public void updateFlight(Flight f) {
+
+    public void updatePassenger(Passenger p) {
         Connection c = ConnectionPool.getInstance().getConnection();
         ConnectionPool.getInstance().returnConnection(c);
     }
-    public void deleteFlight(Flight f) {
+    public void deletePassenger(Passenger p) {
         Connection c = ConnectionPool.getInstance().getConnection();
         ConnectionPool.getInstance().returnConnection(c);
     }

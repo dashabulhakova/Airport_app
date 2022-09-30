@@ -1,6 +1,6 @@
 package com.solvd.airport.models;
 import javax.xml.bind.annotation.*;
-@XmlRootElement(name = "bag")
+@XmlRootElement(name = "bags")
 @XmlType(propOrder = {"id", "amount", "size", "weight"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Bag {
@@ -31,7 +31,7 @@ public class Bag {
         return amount;
     }
 
-    @XmlElement
+    @XmlElement(name = "amount")
     public void setAmount(int amount) {
         this.amount = amount;
     }
@@ -40,7 +40,7 @@ public class Bag {
         return size;
     }
 
-    @XmlElement
+    @XmlElement(name = "size")
     public void setSize(int size) {
         this.size = size;
     }
@@ -49,7 +49,7 @@ public class Bag {
         return weight;
     }
 
-    @XmlElement
+    @XmlElement(name = "weight")
     public void setWeight(int weight) {
         this.weight = weight;
     }

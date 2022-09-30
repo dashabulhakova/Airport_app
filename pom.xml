@@ -93,7 +93,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>Main</mainClass>
+                            <mainClass>com.solvd.airport.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

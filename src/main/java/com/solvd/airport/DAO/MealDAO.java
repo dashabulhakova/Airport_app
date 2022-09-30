@@ -1,29 +1,27 @@
-package com.solvd.airport.DAOclasses;
+package com.solvd.airport.DAO;
 
-import com.solvd.airport.models.Bag;
-import org.apache.log4j.Logger;
+import com.solvd.airport.models.Meal;
 import com.solvd.airport.utils.ConnectionPool;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class BagDAO implements IDAO<Bag> {
-    private static final Logger LOGGER = Logger.getLogger(BagDAO.class.getName());
-    private static final String INSERT = "INSERT INTO bags (id, amount, size, weight) VALUES (?, ?, ?, ?);";
-    private static final String UPDATE = "UPDATE bags SET  amount = ?, size = ?, weight = ?, WHERE id = ?;";
-    private static final String DELETE = "DElETE FROM bags WHERE id = ?";
-
+public class MealDAO implements IDAO<Meal>{
+    private static final Logger LOGGER = Logger.getLogger(MealDAO.class.getName());
+    private static final String INSERT = "INSERT INTO meals (id, meal_type, price) VALUES (?, ?, ?, ?);";
+    private static final String UPDATE = "UPDATE meals SET  meal_type = ?, price = ? WHERE id = ?;";
+    private static final String DELETE = "DElETE FROM meals WHERE id = ?";
     @Override
-    public void create(Bag b) {
+    public void create(Meal m) {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(INSERT);
-            ps.setInt(1, b.getId());
-            ps.setInt(2, b.getAmount());
-            ps.setInt(3, b.getSize());
-            ps.setInt(4, b.getWeight());
+            ps.setInt(1, m.getId());
+            ps.setString(2, m.getMealType());
+            ps.setInt(3, m.getPrice());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage() + "bag was not created");
@@ -34,18 +32,17 @@ public class BagDAO implements IDAO<Bag> {
     }
 
     @Override
-    public void update(Bag b) {
+    public void update(Meal m) {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(UPDATE);
-            ps.setInt(1, b.getId());
-            ps.setInt(2, b.getAmount());
-            ps.setInt(3, b.getSize());
-            ps.setInt(4, b.getWeight());
+            ps.setInt(1, m.getId());
+            ps.setString(2, m.getMealType());
+            ps.setInt(3, m.getPrice());
             ps.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.error(e.getMessage() + "Cannot update bags");
         } finally {
             assert ps != null;
             ConnectionPool.getInstance().returnConnection(c);
@@ -53,12 +50,12 @@ public class BagDAO implements IDAO<Bag> {
     }
 
     @Override
-    public void delete(Bag b) {
+    public void delete(Meal m) {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(DELETE);
-            ps.setInt(1, b.getId());
+            ps.setInt(1, m.getId());
         } catch (SQLException e) {
             LOGGER.error(e.getMessage() + "Could not delete");
         } finally {

@@ -1,4 +1,4 @@
-package com.solvd.airport.DAOclasses;
+package com.solvd.airport.DAO;
 import com.solvd.airport.models.MemberCard;
 import org.apache.log4j.Logger;
 import com.solvd.airport.utils.ConnectionPool;
