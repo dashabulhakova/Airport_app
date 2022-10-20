@@ -1,17 +1,24 @@
 package com.solvd.airport.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.xml.bind.annotation.*;
 import java.util.Objects;
 
 @XmlRootElement(name = "meal")
 @XmlType(propOrder = {"id", "mealType", "price"})
+@JsonPropertyOrder({"id", "mealType", "price"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Meal {
     @XmlAttribute
+    @JsonProperty("id")
     private int id;
     @XmlElement
+    @JsonProperty("type")
     private String mealType;
     @XmlElement
+    @JsonProperty
     private int price;
 
     public Meal() {}

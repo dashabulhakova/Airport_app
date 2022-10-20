@@ -71,13 +71,13 @@ public class UserDAO {
     public void deleteUser(int id) {
         Connection con = ConnectionPool.getInstance().getConnection();
         try(PreparedStatement ps =con.prepareStatement(DELETE)) {
-            ps.setLong(1,id);
+            ps.setInt(1,id);
             if (ps.executeUpdate()>0) {
                 String message = String.format("User with ID: %d was removed successfully", id);
                 LOGGER.info(message);
             }
         } catch (SQLException e) {
-            String message = String.format("User with ID: %d was not removed from DateBase", id);
+            String message = String.format("User with ID: %d was not removed", id);
             LOGGER.error(message);
         } finally {
             ConnectionPool.getInstance().returnConnection(con);

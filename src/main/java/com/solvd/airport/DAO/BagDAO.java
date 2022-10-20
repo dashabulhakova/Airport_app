@@ -1,6 +1,7 @@
 package com.solvd.airport.DAO;
 
 import com.solvd.airport.models.Bag;
+import com.solvd.airport.models.Route;
 import org.apache.log4j.Logger;
 import com.solvd.airport.utils.ConnectionPool;
 
@@ -14,6 +15,10 @@ public class BagDAO implements IDAO<Bag> {
     private static final String UPDATE = "UPDATE bags SET  amount = ?, size = ?, weight = ?, WHERE id = ?;";
     private static final String DELETE = "DElETE FROM bags WHERE id = ?";
 
+    @Override
+    public Route getObjectById(int id) {
+        return null;
+    }
     @Override
     public void create(Bag b) {
         Connection c = ConnectionPool.getInstance().getConnection();
@@ -45,7 +50,7 @@ public class BagDAO implements IDAO<Bag> {
             ps.setInt(4, b.getWeight());
             ps.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e.getMessage() + "Cannot update bags");
+            LOGGER.error(e.getMessage() + "Cannot update staff");
         } finally {
             assert ps != null;
             ConnectionPool.getInstance().returnConnection(c);
@@ -53,12 +58,12 @@ public class BagDAO implements IDAO<Bag> {
     }
 
     @Override
-    public void delete(Bag b) {
+    public void delete(int id) {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(DELETE);
-            ps.setInt(1, b.getId());
+            ps.setInt(1,id);
         } catch (SQLException e) {
             LOGGER.error(e.getMessage() + "Could not delete");
         } finally {

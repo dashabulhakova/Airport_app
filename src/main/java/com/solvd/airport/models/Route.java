@@ -1,23 +1,24 @@
 package com.solvd.airport.models;
 
 public class Route {
-    private int routeId;
+    private int id;
     private String origin;
     private String destination;
     private static boolean connecting = false;
     public Route() {}
 
-    public Route(String origin, String destination) {
+    public Route(int id, String origin, String destination) {
+        this.id = id;
         this.origin = origin;
         this.destination = destination;
     }
 
     public int getRouteId() {
-        return routeId;
+        return id;
     }
 
     public void setRouteId(int routeId) {
-        this.routeId = routeId;
+        this.id = id;
     }
 
     public String getOrigin() {

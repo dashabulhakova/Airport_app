@@ -1,4 +1,4 @@
-package com.solvd.airport.services;
+package com.solvd.airport.services.JSON;
 
 import com.solvd.airport.DAO.MealDAO;
 import com.solvd.airport.models.Meal;

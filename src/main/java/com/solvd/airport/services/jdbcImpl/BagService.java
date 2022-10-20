@@ -1,7 +1,8 @@
-package com.solvd.airport.services;
+package com.solvd.airport.services.jdbcImpl;
 
 import com.solvd.airport.DAO.BagDAO;
 import com.solvd.airport.models.Bag;
+import com.solvd.airport.services.IBagService;
 import com.solvd.airport.utils.ParserDOM;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;

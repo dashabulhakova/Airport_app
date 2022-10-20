@@ -2,6 +2,7 @@ package com.solvd.airport.services.jdbcImpl;
 
 import com.solvd.airport.DAO.UserDAO;
 import com.solvd.airport.models.User;
+import com.solvd.airport.services.IUserService;
 
 public class UserService implements IUserService {
     private UserDAO userDAO = new UserDAO();

@@ -1,6 +1,7 @@
 package com.solvd.airport.DAO;
 
 import com.solvd.airport.models.Meal;
+import com.solvd.airport.models.Route;
 import com.solvd.airport.utils.ConnectionPool;
 import org.apache.log4j.Logger;
 
@@ -13,6 +14,10 @@ public class MealDAO implements IDAO<Meal>{
     private static final String INSERT = "INSERT INTO meals (id, meal_type, price) VALUES (?, ?, ?, ?);";
     private static final String UPDATE = "UPDATE meals SET  meal_type = ?, price = ? WHERE id = ?;";
     private static final String DELETE = "DElETE FROM meals WHERE id = ?";
+    @Override
+    public Route getObjectById(int id) {
+        return null;
+    }
     @Override
     public void create(Meal m) {
         Connection c = ConnectionPool.getInstance().getConnection();
@@ -50,12 +55,12 @@ public class MealDAO implements IDAO<Meal>{
     }
 
     @Override
-    public void delete(Meal m) {
+    public void delete(int id) {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(DELETE);
-            ps.setInt(1, m.getId());
+            ps.setInt(1,id);
         } catch (SQLException e) {
             LOGGER.error(e.getMessage() + "Could not delete");
         } finally {

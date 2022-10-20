@@ -1,7 +1,5 @@
 package com.solvd.airport.models;
 
-import java.util.Objects;
-
 public class Staff {
     private int id;
     private String position;
@@ -9,8 +7,10 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String position) {
+    public Staff(int id, String position, int staffMemberId) {
+        this.id = id;
         this.position = position;
+        this.staffMemberId = staffMemberId;
     }
 
     public int getId() {
