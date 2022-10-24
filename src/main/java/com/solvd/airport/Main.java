@@ -2,6 +2,7 @@ package com.solvd.airport;
 
 import com.solvd.airport.models.Meal;
 import com.solvd.airport.models.Staff;
+import com.solvd.airport.models.User;
 import com.solvd.airport.services.IStaffService;
 import com.solvd.airport.services.JSON.MealService;
 import com.solvd.airport.services.MyBatisImpl.StaffService;
@@ -17,11 +18,16 @@ public class Main {
     public static void main(String[] args) {
         MealService mealService = new MealService();
         UserService userService = new UserService();
+
         //create staff with mybatis
         IStaffService staffService = new StaffService();
         Staff newStaff = new Staff(1, "Pilot", 345);
-        staffService.createStaff(newStaff);
-        //userService.getUserByID(1);
+       // staffService.createStaff(newStaff);
+
+       // User newUser = new User(1, "James", "Styles", "James@test.com");
+       // userService.createUser(newUser);
+        userService.getUserByID(1);
+        userService.getAllUsers();
         //LOGGER.info(userService);
         //..mealService.getMealFromXML("src/main/resources/xml/meals.xml", "src/main/resources/xsd/meals.xsd");
         //..mealService.createXML("src/main/resources/xml/meals.xml");

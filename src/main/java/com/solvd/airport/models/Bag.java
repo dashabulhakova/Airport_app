@@ -8,9 +8,7 @@ public class Bag {
     private int amount;
     private int size;
     private int weight;
-
     public Bag() {}
-
     public Bag(int amount, int size, int weight) {
         this.amount = amount;
         this.size = size;

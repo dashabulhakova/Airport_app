@@ -7,15 +7,16 @@ import com.solvd.airport.utils.ConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BagDAO implements IDAO<Bag> {
     private static final Logger LOGGER = Logger.getLogger(BagDAO.class.getName());
+    private static final String READ = "SELECT * FROM Users where id = ?";
     private static final String INSERT = "INSERT INTO bags (id, amount, size, weight) VALUES (?, ?, ?, ?);";
     private static final String UPDATE = "UPDATE bags SET  amount = ?, size = ?, weight = ?, WHERE id = ?;";
     private static final String DELETE = "DElETE FROM bags WHERE id = ?";
 
-    @Override
     public Route getObjectById(int id) {
         return null;
     }

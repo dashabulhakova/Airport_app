@@ -8,14 +8,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
     private static final Logger LOGGER = Logger.getLogger(UserDAO.class.getName());
     private static final String READ = "SELECT * FROM Users where id = ?";
+    private static final String READALL = "SELECT * FROM Users";
     private static final String INSERT = "INSERT INTO Users (id, first_name, last_name, email) VALUES (?, ?, ?, ?);";
     private static final String UPDATE = "UPDATE Users SET  amount = ?, size = ?, weight = ?, WHERE id = ?;";
     private static final String DELETE = "DElETE FROM Users WHERE id = ?";
-    public User getUserByID(int id) {
+    public User getUserByID(int id){
             Connection c = ConnectionPool.getInstance().getConnection();
             try(PreparedStatement ps = c.prepareStatement(READ)) {
                 ps.setLong(1,id);
@@ -82,5 +85,33 @@ public class UserDAO {
         } finally {
             ConnectionPool.getInstance().returnConnection(con);
         }
+    }
+    public List<User> getAllUsers() {
+        Connection con = ConnectionPool.getInstance().getConnection();
+        List<User> userList = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement ps = con.prepareStatement(READALL)) {
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String firstName = rs.getString("first_name");
+                String lastName = rs.getString("last_name");
+                String email = rs.getString("email");
+                User user = new User(id, firstName, lastName, email);
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Getting all records from User Table Failed");
+        } finally {
+            ConnectionPool.getInstance().returnConnection(con);
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return userList;
     }
 }
